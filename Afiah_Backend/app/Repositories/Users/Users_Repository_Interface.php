@@ -20,4 +20,6 @@ interface Users_Repository_Interface
     public function profile();
 
     public function logout();
+
+    public function edit_profile($data,$id);
 }

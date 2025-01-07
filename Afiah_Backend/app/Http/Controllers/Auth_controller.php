@@ -148,13 +148,8 @@ class Auth_controller extends Controller
             'password' => 'required|confirmed|min:8',
             'national_number' => 'required|unique:doctor',
             'specification_id' => 'required',
-            'street' => 'required',
-            'governate' => 'required',
-            'district' => 'required',
-            'sub_district' => 'required',
-            'community' => 'required',
             'city' => 'required',
-            'details' => 'required'
+            'address' => 'required'
         ]);
 
         $user = $this->user_repository->create_doctor($data);
@@ -233,9 +228,33 @@ class Auth_controller extends Controller
             'Data' => $user
         ]);
     }
+
+    //////////////////////////////////////////////////////////////
+
+    public function edit(Request $request)
+    {
+        $id = auth()->user()->id;
+
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
+        ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $dest = 'image/';
+
+            $imagew = time() . '.' . $image->getClientOriginalExtension();
+            $image->move($dest, $imagew);
+        }
+
+        $patient = $this->user_repository->edit_profile($id, [
+            'image' => '/image/' . $imagew ?? ''
+        ]);
+
+        return response()->json([
+            'Status' => 200,
+            'Message' => 'Image added',
+            'Data' => $patient
+        ]);
+    }
 }
-
-
-//o.get();
-//o->get();
-//int x

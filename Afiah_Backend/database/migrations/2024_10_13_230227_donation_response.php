@@ -11,14 +11,13 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('blood_donamtion_admin', function (Blueprint $table) {
+    Schema::create('donation_response', function (Blueprint $table) {
       $table->id();
-      $table->unsignedBigInteger('admin_id');
+      $table->unsignedBigInteger('blood_donation_id');
+      $table->string('donation_receipt');
       $table->timestamps();
 
-      $table->integer('Blood_Donation');
-      $table->text('image_donation');
-      $table->foreign('admin_id')->references('id')->on('admin');
+      $table->foreign('blood_donation_id')->references('id')->on('blood_donation')->onDelete('cascade');
     });
   }
 

@@ -28,17 +28,8 @@ class Users_Repository implements Users_Repository_Interface
             'phone' => $data['phone'],
             'specification_id' => $data['specification_id'],
             'national_number' => $data['national_number'],
-        ]);
-
-        Address_of_doctor::create([
-            'doctor_id' => $doctor->id,
-            'street' => $data['street'],
-            'governate' => $data['governate'],
-            'district' => $data['district'],
-            'sub_district' => $data['sub_district'],
-            'community' => $data['community'],
-            'details' => $data['details'],
             'city' => $data['city'],
+            'address' => $data['address']
         ]);
 
         return $doctor;
@@ -84,5 +75,17 @@ class Users_Repository implements Users_Repository_Interface
     public function logout()
     {
         Auth::logout();
+    }
+
+    //////////////////////////////////////////////////////////////
+
+    public function edit_profile($data , $id)
+    {
+        $patient = Patient::where('id',$id);
+
+        $patient->image = $data;
+
+        return null;
+
     }
 }

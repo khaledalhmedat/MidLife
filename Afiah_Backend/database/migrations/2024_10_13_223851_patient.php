@@ -20,7 +20,8 @@ return new class extends Migration
           $table->text('city');
           $table->text('street');
           $table->text('password');
-          $table->boolean('is_approved')->default(true);
+          $table->text('image')->nullable();
+          $table->boolean('is_approved')->default(false);
           $table->rememberToken();
           $table->timestamps();
       });

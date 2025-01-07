@@ -17,7 +17,9 @@ return new class extends Migration
             $table->text('phone')->unique();
             $table->text('national_number')->unique();
             $table->string('password');
-            $table->boolean('is_approved')->default(true);
+            $table->text('city');
+            $table->text('address');
+            $table->boolean('is_approved')->default(false);
             $table->timestamps();
 
             $table->unsignedBigInteger('specification_id');

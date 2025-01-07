@@ -16,4 +16,19 @@ class Examination_that_checked_correctly extends Model
         'examination_id',
         'patient_id'
     ];
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    public function examination()
+    {
+        return $this->belongsTo(Examination::class);
+    }
 }

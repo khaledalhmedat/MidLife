@@ -29,8 +29,13 @@ class Patient extends Model
         'remember_token',
     ];
     
-    public function doctor()
+    public function examination()
     {
-        return $this->belongsToMany(Doctor::class,'examination');
+        return $this->hasMany(Examination::class);
+    }
+
+    public function examination_that_checked_correctly()
+    {
+        return $this->hasMany(Examination_that_checked_correctly::class);
     }
 }

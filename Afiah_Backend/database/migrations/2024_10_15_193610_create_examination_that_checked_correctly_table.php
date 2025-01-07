@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('examination_that_checked_correctly', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('doctor_id');
+            $table->unsignedBigInteger('doctor_id')->nullable();
             $table->unsignedBigInteger('examination_id');
-            $table->unsignedBigInteger('patient_id');
+            $table->unsignedBigInteger('patient_id')->nullable();
             $table->timestamps();
-            $table->date('time');
+            $table->date('time')->nullable();
 
 
             $table->foreign('doctor_id')->references('id')->on('doctor');

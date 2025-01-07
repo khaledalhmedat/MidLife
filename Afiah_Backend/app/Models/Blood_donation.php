@@ -12,9 +12,20 @@ class Blood_donation extends Model
     protected $table = "blood_donation";
 
     protected $fillable = [
-        'blood',
-        'amount',
-        'type_of_blood',
-        'patient_id'
+        'patient_id',
+        'blood_type',
+        'units_needed',
+        'status',
+        'medical_report'
     ];
+
+    public function donation_response()
+    {
+        return $this->hasMany(Donation_response::class, 'blood_donation_id');
+    }
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
 }

@@ -19,6 +19,8 @@ class Doctor extends Model
         'password',
         'national_number',
         'phone',
+        'city',
+        'address'
     ];
 
     protected $hidden = [
@@ -26,9 +28,9 @@ class Doctor extends Model
         'remember_token',
     ];
 
-    public function patient()
+    public function examination()
     {
-        return $this->belongsToMany(Patient::class,'examination');
+        return $this->hasMany(Examination::class);
     }
 
     public function address_of_doctor()
@@ -39,6 +41,11 @@ class Doctor extends Model
     public function specification()
     {
        return $this->belongsTo(specification::class);
+    }
+
+    public function examination_that_checked_correctly()
+    {
+        return $this->hasMany(Examination_that_checked_correctly::class);
     }
     
 }

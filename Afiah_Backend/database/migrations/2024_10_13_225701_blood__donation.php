@@ -14,10 +14,12 @@ return new class extends Migration
       Schema::create('Blood_Donation', function (Blueprint $table) {
           $table->id();
 
-          $table->boolean('blood');
-          $table->integer('amount');
-          $table->text('type_of_blood');
+          $table->integer('units_needed');
+          $table->string('status')->default('pending');
+          $table->text('blood_type');
           $table->unsignedBigInteger('patient_id');
+          $table->text('medical_report');
+          $table->string('city');
           $table->timestamps();
 
 

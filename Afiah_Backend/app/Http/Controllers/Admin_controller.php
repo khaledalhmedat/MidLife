@@ -68,4 +68,108 @@ class Admin_controller extends Controller
             'Data' => $doctor
         ]);
     }
+
+    //////////////////////////////////////////////////////////////////////
+
+    public function display_patients()
+    {
+        $admin = $this->admin_repository->display_patients();
+
+        return response()->json([
+            'Status' => 200,
+            'Message' => 'Display all patients',
+            'Data' => $admin
+        ]);
+    }
+
+    //////////////////////////////////////////////////////////////////////
+
+    public function display_doctors()
+    {
+        $admin = $this->admin_repository->display_doctors();
+
+        return response()->json([
+            'Status' => 200,
+            'Message' => 'Display all doctors',
+            'Data' => $admin
+        ]);
+    }
+
+    //////////////////////////////////////////////////////////////////////
+
+    public function delete_patient($id)
+    {
+        $admin = $this->admin_repository->delete_patient($id);
+
+        return response()->json([
+            'Status' => 200,
+            'Message' => 'Patient deleted',
+            'Data' => $admin
+        ]);
+    }
+
+    /////////////////////////////////////////////////////////////////////
+
+    public function delete_doctor($id)
+    {
+        $admin = $this->admin_repository->delete_doctor($id);
+
+        return response()->json([
+            'Status' => 200,
+            'Message' => 'Doctor deleted',
+            'Data' => $admin
+        ]);
+    }
+
+    /////////////////////////////////////////////////////////////////////
+
+    public function display_examinations()
+    {
+        $admin = $this->admin_repository->display_examinations();
+
+        return response()->json([
+            'Status' => 200,
+            'Message' => 'Display all examinations',
+            'Data' => $admin
+        ]);
+    }
+
+    /////////////////////////////////////////////////////////////////////
+
+    public function delete_examinations($id)
+    {
+        $admin = $this->admin_repository->delete_examination($id);
+
+        return response()->json([
+            'Status' => 200,
+            'Message' => 'examination deleted',
+            'Data' => $admin
+        ]);
+    }
+
+    /////////////////////////////////////////////////////////////////////
+
+    public function patient_search($name)
+    {
+        $admin = $this->admin_repository->patient_search($name);
+
+        return response()->json([
+            'Status' => 200,
+            'Message' => 'Search results',
+            'Data' => $admin
+        ]);
+    }
+
+    /////////////////////////////////////////////////////////////////////
+
+    public function doctor_search($name)
+    {
+        $admin = $this->admin_repository->doctor_search($name);
+
+        return response()->json([
+            'Status' => 200,
+            'Message' => 'Search results',
+            'Data' => $admin
+        ]);
+    }
 }
